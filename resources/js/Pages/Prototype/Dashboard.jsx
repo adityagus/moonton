@@ -59,6 +59,7 @@ export default function Dashboard() {
                             }
                             return (
                                 <MovieCard
+                                    key={i}
                                     slug="Meong Golden"
                                     name="Meong Golden"
                                     category="Horror • Love"
