@@ -59,10 +59,10 @@ export default function Dashboard() {
                             }
                             return (
                                 <MovieCard
-                                  slug="Meong Golden"
-                                  name="Meong Golden"
-                                  category="Horror • Love"
-                                  thumbnail="/images/browse-1.png"
+                                    slug="Meong Golden"
+                                    name="Meong Golden"
+                                    category="Horror • Love"
+                                    thumbnail="/images/browse-1.png"
                                 />
                             );
                         })}

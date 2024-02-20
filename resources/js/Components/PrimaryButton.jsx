@@ -7,7 +7,7 @@ const PrimaryButton = function PrimaryButton({ type = 'submit', className = '', 
             type={type}
             onClick={onClick}
             className={
-                `rounded-2xl     py-[13px] text-center w-full ${processing && 'opacity-30'} btn-${variant} ${className}`
+                `rounded-2xl py-[13px] text-center w-full ${processing && 'opacity-30'} btn-${variant} ${className}`
             }
             disabled={processing}
         >
@@ -18,9 +18,9 @@ const PrimaryButton = function PrimaryButton({ type = 'submit', className = '', 
 }
 
 PrimaryButton.propTypes = {
-    type: PropTypes.oneOf("button", "submit", "reset"),
+    type: PropTypes.oneOf(["button", "submit", "reset"]),
     className: PropTypes.string,
-    variant: PropTypes.oneOf("primary", "secondary", "tertiary", "light-outline", "white-outline"),
+    variant: PropTypes.oneOf(["primary", "secondary", "tertiary", "light-outline", "white-outline"]),
     processing: PropTypes.bool,
     children: PropTypes.node,
 }

@@ -1,3 +1,5 @@
+import { Link } from "@inertiajs/inertia-react";
+
 export default function sidebar({ children }) {
     return (
         <aside className="fixed z-50 w-[300px] h-full">
@@ -8,7 +10,7 @@ export default function sidebar({ children }) {
                 <div className="links flex flex-col mt-[60px] h-full gap-[50px]">
                     <div>
                         <div className="text-gray-1 text-sm mb-4">Menu</div>
-                        <a href="/" className="side-link active">
+                        <a href="/" className="side-link">
                             <svg
                                 width="24"
                                 height="24"
@@ -27,7 +29,7 @@ export default function sidebar({ children }) {
                             </svg>
                             Discover
                         </a>
-                        <a href="#!" className="side-link">
+                        <Link href={route('prototype.subcriptionPlan')} className="side-link">
                             <svg
                                 width="24"
                                 height="24"
@@ -42,7 +44,7 @@ export default function sidebar({ children }) {
                                 />
                             </svg>
                             Your Favorites
-                        </a>
+                        </Link>
                         <a href="#!" className="side-link">
                             <svg
                                 width="24"
@@ -78,7 +80,7 @@ export default function sidebar({ children }) {
                     </div>
                     <div>
                         <div className="text-gray-1 side-link mb-4">Others</div>
-                        <a href="pricing.html" className="side-link">
+                        <a href="/prototype/subcriptionPlan" className="side-link active">
                             <svg
                                 width="24"
                                 height="24"
