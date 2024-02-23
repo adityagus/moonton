@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef  } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 
@@ -37,6 +37,7 @@ const TextInput = forwardRef(function TextInput(
                 id={id}
                 value={value}
                 defaultValue={defaultValue}
+                ref={input}
                 className={`rounded-2xl bg-form-bg py-[13px] px-7 w-full ${isError && "input-error"} input-${variant} ${className}`}
                 autoComplete={autoComplete}
                 required={required}
@@ -60,6 +61,6 @@ TextInput.propTypes = {
     handleChange: PropTypes.func,
     placeholder: PropTypes.string,
     isError: PropTypes.bool,
-}
+    }
 
 export default TextInput;
