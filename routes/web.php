@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\User\DashboardController;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\MovieController;
+use App\Http\Controllers\User\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,9 @@ use Inertia\Inertia;
 Route::redirect('/', '/login');
 
 
-Route::middleware('auth', 'role:user')->prefix('dashboard')->group(function(){
+Route::middleware('auth', 'role:user')->prefix('dashboard')->name('user.dashboard.')->group(function(){
   Route::get('/', [DashboardController::class, 'index'])->name('index');
+  Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
 });
 
 Route::prefix('prototype')->name("prototype.")->group(function () {
@@ -37,9 +39,9 @@ Route::prefix('prototype')->name("prototype.")->group(function () {
     Route::get('/subcriptionPlan', function (){
         return Inertia::render('Prototype/SubcriptionPlan');
     })->name('subcriptionPlan');
-    Route::get('/movie/{slug}', function (){
-      return Inertia::render('Prototype/Movie/Show');
-  })->name('movie.show');
+  //   Route::get('/movie/{slug}', function (){
+  //     return Inertia::render('Prototype/Movie/Show');
+  // })->name('movie.show');
 });
 
 // Route::get('/', function () {
