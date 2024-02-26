@@ -20,7 +20,14 @@ class UserTableSeeder extends Seeder
           'email' =>  'admin@moonton.test',
           'password' =>  bcrypt('Aditya123'),
         ]);
+
+        $user = User::create([
+          'name' => 'aditya',
+          'email' =>  'aditya@gmail.com',
+          'password' =>  bcrypt('aditya123'),
+        ]);
         
         $admin->assignRole('admin');
+        $user->assignRole('user');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\DashboardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,6 +19,11 @@ use Inertia\Inertia;
 
 Route::redirect('/', '/login');
 
+
+Route::middleware('auth', 'role:user')->prefix('dashboard')->group(function(){
+  Route::get('/', [DashboardController::class, 'index'])->name('index');
+});
+
 Route::prefix('prototype')->name("prototype.")->group(function () {
     Route::get('/login', function (){
         return Inertia::render('Prototype/Login');
@@ -26,7 +32,7 @@ Route::prefix('prototype')->name("prototype.")->group(function () {
         return Inertia::render('Prototype/Register');
     })->name('register');
     Route::get('/dashboard', function (){
-        return Inertia::render('Prototype/Dashboard');
+        return Inertia::render('User/Dashboard/Index');
     })->name('dashboard');
     Route::get('/subcriptionPlan', function (){
         return Inertia::render('Prototype/SubcriptionPlan');
@@ -45,9 +51,7 @@ Route::prefix('prototype')->name("prototype.")->group(function () {
 //     ]);
 // });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
