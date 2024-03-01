@@ -27,7 +27,7 @@ class UserSubcription extends Model
      */
     public function subcriptionPlan(): BelongsTo
     {
-        return $this->belongsTo(SubcriptionPlan::class, 'user_id', 'id');
+        return $this->belongsTo(SubcriptionPlan::class);
     }
     
 }

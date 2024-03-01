@@ -6,6 +6,7 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\MovieController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\SubcriptionPlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ Route::redirect('/', '/login');
 Route::middleware('auth', 'role:user')->prefix('dashboard')->name('user.dashboard.')->group(function(){
   Route::get('/', [DashboardController::class, 'index'])->name('index');
   Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show');
+  Route::get('/subcription-plan', [SubcriptionPlanController::class, 'index'])->name('subcriptionPlan.index');
+  Route::post('subcription-plan/{subcriptionPlan}/user-subcribe', [SubcriptionPlanController::class, 'userSubcribe'])->name('subcriptionPlan.userSubcribe');
 });
 
 Route::prefix('prototype')->name("prototype.")->group(function () {
