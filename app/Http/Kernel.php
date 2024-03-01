@@ -3,6 +3,7 @@
 namespace App\Http;
 
 // use Spatie\Permission\Middlewares\RoleMiddleware;
+use App\Http\Middleware\CheckUserSubcription;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+        'CheckUserSubcription' => \App\Http\Middleware\CheckUserSubcription::class,
     ];
 }
