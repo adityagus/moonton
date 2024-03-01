@@ -3,14 +3,15 @@ import { Link } from "@inertiajs/inertia-react";
 
 export default function Show() {
   return(
-    <section class="mx-auto h-screen w-screen relative watching-page font-poppins bg-form-bg" id="stream">
+    <section class="mx-auto h-screen w-screen relative watching-page font-poppins bg-form-bg overflow-hidden" id="stream" >
 
         <div className="pt-[100px]">
         <ReactPlayer 
         url='https://www.youtube.com/watch?v=LXb3EKWsInQ'
         controls
         width="100%"
-        height="85fea0px"
+        height="750px"
+        
         />
         </div>
 
