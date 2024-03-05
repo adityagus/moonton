@@ -18,7 +18,7 @@ export default function Authenticated({ auth, children}){
               {/* START: Topbar */}
               <Topbar name={auth.user.name}/>
               {/* END: Topbar */}
-                <main>{children}</main>
+                <main className='mt-5'>{children}</main>
             </div>
       </div>
       {/* END: Content */}

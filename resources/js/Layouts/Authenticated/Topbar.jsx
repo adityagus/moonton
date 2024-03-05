@@ -3,7 +3,6 @@ import { useState, useRef } from 'react'
 
 export default function Topbar ({name}){
   // ini untuk mengecek apa dropdown nya terbuka
-  console.log('name', name)
   const [dropdownOpen, setDropdownOpen] = useState(true)
   const dropdownTarget = useRef()
 

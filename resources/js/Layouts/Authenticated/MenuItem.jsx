@@ -14,7 +14,7 @@ export default function MenuItem({
             href={link ? route(link) : null}
             className={`side-link ${isActive && "active"}`}
             method={method}
-            as="submit"
+            as="button"
         >
             {icon}
             {text}

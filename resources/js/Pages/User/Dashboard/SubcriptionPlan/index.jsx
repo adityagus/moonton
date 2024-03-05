@@ -6,7 +6,6 @@ import { Inertia } from '@inertiajs/inertia'
 
 export default function SubcriptionPlan({auth, subcriptionPlans}) {
     const selectSubcription = id => {
-      alert('Please select a subscription');
       Inertia.post(route('user.dashboard.subcriptionPlan.userSubcribe', {
         subcriptionPlan: id 
       }))
