@@ -8,9 +8,8 @@ export default function MenuItem({
     method = 'get',
 }) {
 
-  console.log('method' + text + method)
     return (
-        <Link
+        <a
             href={link ? route(link) : null}
             className={`side-link ${isActive && "active"}`}
             method={method}
@@ -18,6 +17,6 @@ export default function MenuItem({
         >
             {icon}
             {text}
-        </Link>
+        </a>
     );
 }

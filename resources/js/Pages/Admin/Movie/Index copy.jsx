@@ -45,7 +45,7 @@ export default function Index({ auth, flashMessage, movies }) {
                                     <td>
                                         <Link href={route('admin.dashboard.movie.edit', movie.id)}>
                                             <PrimaryButton variant="primary">
-                                                Ubah
+                                                Detail
                                             </PrimaryButton>
                                         </Link>
                                     </td>

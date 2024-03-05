@@ -51,13 +51,13 @@ export default function Topbar ({name}){
                       <a href="#!" className="transition-all hover:bg-sky-100 p-4">
                           Settings
                       </a>
-                      <Link
+                      <a
                           href={route('logout')}
                           className="transition-all hover:bg-sky-100 p-4"
                           method="post"
                       >
                           Sign Out
-                      </Link>
+                      </a>
                   </div>
               </div>
           </div>

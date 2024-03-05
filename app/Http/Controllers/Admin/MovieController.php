@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\Movie\Store;
+use App\Http\Requests\Admin\Movie\Update;
+
 
 class MovieController extends Controller
 {
@@ -19,7 +21,10 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Admin/Movie/Index');
+        $movie = Movie::all();
+        return Inertia::render('Admin/Movie/Index', [
+            'movies' => $movie,
+        ]);
     }
 
     /**
@@ -68,9 +73,11 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(movie $movie)
     {
-        //
+        return Inertia::render('Admin/Movie/Edit', [
+            'movie' => $movie,
+        ]);
     }
 
     /**
@@ -80,9 +87,20 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Update $request, Movie $movie)
     {
-        //
+        $data = $request->validated();
+        if($request->file('thumbnail')){
+            $data['thumbnail'] = Storage::disk('public')->put('movie', $request->file('thumbnail'));
+            Storage::disk('public')->delete($movie->thumbnail);
+        }
+
+        $movie->update($data);
+        
+        return redirect(route('admin.dashboard.movie.index'))->with([
+            'message' => "Movie updated successfully",
+            'type' =>'success',
+        ]);
     }
 
     /**
