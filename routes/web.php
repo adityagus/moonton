@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\MovieController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\SubcriptionPlanController;
+use App\Http\Controllers\Admin\MovieController as AdminMovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,11 @@ Route::middleware('auth', 'role:user')->prefix('dashboard')->name('user.dashboar
   Route::get('/movie/{movie:slug}', [MovieController::class, 'show'])->name('movie.show')->middleware('CheckUserSubcription:true');
   Route::get('/subcription-plan', [SubcriptionPlanController::class, 'index'])->name('subcriptionPlan.index')->middleware('CheckUserSubcription:false');
   Route::post('subcription-plan/{subcriptionPlan}/user-subcribe', [SubcriptionPlanController::class, 'userSubcribe'])->name('subcriptionPlan.userSubcribe')->middleware('CheckUserSubcription:false');
+});
+
+Route::middleware('auth', 'role:admin')->prefix('admin')->name('admin.dashboard.')->group(function() {
+  Route::put('movie/{movie}/restore', [AdminMovieController::class, 'restore'])->name('movie.restore');
+  Route::resource('movie', AdminMovieController::class);
 });
 
 Route::prefix('prototype')->name("prototype.")->group(function () {

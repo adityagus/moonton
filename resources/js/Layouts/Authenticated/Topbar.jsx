@@ -3,7 +3,6 @@ import { useState, useRef } from 'react'
 
 export default function Topbar ({name}){
   // ini untuk mengecek apa dropdown nya terbuka
-  console.log('name', name)
   const [dropdownOpen, setDropdownOpen] = useState(true)
   const dropdownTarget = useRef()
 
@@ -56,6 +55,8 @@ export default function Topbar ({name}){
                           href={route('logout')}
                           className="transition-all hover:bg-sky-100 p-4"
                           method="post"
+                          as='button'
+                          type='button'
                       >
                           Sign Out
                       </Link>
