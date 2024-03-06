@@ -5,7 +5,7 @@ import FeaturedMovie from "@/Components/FeaturedMovie";
 import MovieCard from "@/Components/movieCard";
 
 
-export default function Dashboard(props) {
+export default function Dashboard({auth, featuredMovies, movies}) {
     const flickityOptions = {
         cellAlign: "left",
         contain: true,
@@ -16,6 +16,8 @@ export default function Dashboard(props) {
         draggable: ">1",
     };
 
+      
+
     return (
         <>
             <Head title="Dashboard">
@@ -24,28 +26,24 @@ export default function Dashboard(props) {
                     href="https://unpkg.com/flickity@2/dist/flickity.min.css"
                 />
             </Head>
-            <Authenticated 
-            auth={props.auth}
-            errors={props.errors}
-            >
+            <Authenticated auth={auth}>
                 <div>
                     <div className="font-semibold text-[22px] text-black mb-4">
                         Featured Movies
                     </div>
                     <Flickity className="gap-[30px]" options={flickityOptions}>
-                        {[1, 2, 3, 4].map((i) => {
+                        {featuredMovies.map((featuredMovie, index) => {
                             {
                                 /* <!-- Movie Thumbnail --> */
                             }
                             return (
                                 <FeaturedMovie
-                                    key={i}
-                                    slug="movie-thumbnail"
-                                    name={`the batman in love ${i}`}
-                                    thumbnail="/images/featured-1.png"
-                                    category="Action"
-                                    title="Batman"
-                                    rating={i + 1}
+                                    key={featuredMovie.id}
+                                    slug={featuredMovie.slug}
+                                    name={featuredMovie.name}
+                                    thumbnail={featuredMovie.thumbnail}
+                                    category={featuredMovie.category}
+                                    rating={featuredMovie.rating}
                                 />
                             );
                         })}
@@ -56,17 +54,17 @@ export default function Dashboard(props) {
                         Browse
                     </div>
                     <Flickity className="gap-[30px]" options={flickityOptions}>
-                        {[1, 2, 3, 4, 5, 6, 7].map((i) => {
+                        {movies.map((movie, index) => {
                             {
                                 /* <!-- Movies 1 --> */
                             }
                             return (
                                 <MovieCard
-                                    key={i}
-                                    slug="Meong Golden"
-                                    name="Meong Golden"
-                                    category="Horror • Love"
-                                    thumbnail="/images/browse-1.png"
+                                    key={index}
+                                    slug={movie.slug}
+                                    name={movie.name}
+                                    category={movie.category}
+                                    thumbnail={movie.thumbnail}
                                 />
                             );
                         })}

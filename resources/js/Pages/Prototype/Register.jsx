@@ -77,7 +77,7 @@ export default function register() {
                                         </span>
                                     </PrimaryButton>
 
-                                    <Link href={route("prototype.login")}>
+                                    <Link href={route("login")}>
                                         <PrimaryButton
                                             type="button"
                                             variant="light-outline"

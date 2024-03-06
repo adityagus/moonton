@@ -14,7 +14,7 @@ const FeaturedMovie = function FeaturedMovie({
     return (
         <div className="absolute overflow-hidden group mr-[30px]">
             <img
-                src={thumbnail}
+                src={`/storage/${thumbnail}`}
                 className="object-cover rounded-[30px] w-[520px] h-[340px]"
                 alt=""
             />
@@ -44,7 +44,7 @@ const FeaturedMovie = function FeaturedMovie({
                     <img src="/icons/ic_play.svg" width="50" alt="" />
                 </div>
             </div>
-            <Link  href={route('prototype.movie.show', slug)} className="inset-0 absolute z-50"></Link>
+            <Link  href={route('user.dashboard.movie.show', slug)} className="inset-0 absolute z-50"></Link>
         </div>
     );
 }
