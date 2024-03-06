@@ -16,8 +16,6 @@ export default function Dashboard({auth, featuredMovies, movies}) {
         draggable: ">1",
     };
 
-    console.log('isi movie', movies);
-    console.log('isi featuredMovies', featuredMovies);
       
 
     return (

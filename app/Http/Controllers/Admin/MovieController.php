@@ -21,7 +21,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movie = Movie::all();
+        $movie = Movie::withTrashed()->orderBy('deleted_at', 'desc')->get();
         return Inertia::render('Admin/Movie/Index', [
             'movies' => $movie,
         ]);
@@ -109,8 +109,20 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+        return redirect(route('admin.dashboard.movie.index'))->with([
+            'message' => "Movie deleted successfully",
+            'type' => 'success',
+        ]);
+    }
+
+    public function restore($movie){
+      Movie::withTrashed()->find($movie)->restore();
+      return redirect(route('admin.dashboard.movie.index'))->with([
+        'message' => "Movie restored successfully",
+        'type' =>'success',
+      ]);
     }
 }
